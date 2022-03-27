@@ -1,0 +1,16 @@
+{
+  "name": "web-hooks",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "github-webhook-handler": "^1.0.0"
+  }
+}
