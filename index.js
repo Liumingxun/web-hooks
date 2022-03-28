@@ -23,7 +23,8 @@ function checkRepo(repoName, repoUrl) {
   fs.access(codeDir.path + '/' + repoName)
     .then(() => {
       exec('git pull --all', {
-        cwd: codeDir.path + repoName
+        cwd: codeDir.path + repoName,
+        shell: '/bin/zsh'
       }, (error, stdout, stderr) => {
         if (error) {
           console.error(`Shell Error: ${error.message}`)
