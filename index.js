@@ -24,7 +24,7 @@ function checkRepo(repoName, repoUrl) {
     .then(() => {
       exec('git pull --all', {
         cwd: codeDir.path + '/' + repoName,
-        shell: '/bin/zsh'
+        shell: '/bin/bash'
       }, (error, stdout, stderr) => {
         if (error) {
           console.error(`Shell Error: ${error.message}`)
