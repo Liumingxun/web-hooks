@@ -39,7 +39,7 @@ function checkRepo(repoName, repoUrl) {
       fs.mkdir(codeDir.path + '/' + repoName)
         .then(() => {
           exec(`git clone ${repoUrl}`, {
-            cwd: codeDir.path + repoName
+            cwd: codeDir.path + '/' + repoName
           }, (error, stdout, stderr) => {
             if (error) {
               console.error(`Shell Error: ${error.message}`)
