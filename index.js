@@ -61,6 +61,8 @@ handler.on('push', function (event) {
   const repoUrl = event.payload.clone_url
   const ref = event.payload.ref
 
+  console.log(event.payload)
+
   console.log('Received a push event for %s to %s',
     repoName,
     ref)
