@@ -36,23 +36,17 @@ function checkRepo(repoName, repoUrl) {
     })
     .catch(reason => {
       console.error(`Error: Have no git repository ${reason.path}`)
-      fs.mkdir(codeDir.path + '/' + repoName)
-        .then(() => {
-          exec(`git clone ${repoUrl}`, {
-            cwd: codeDir.path + '/' + repoName,
-            shell: '/bin/bash'
-          }, (error, stdout, stderr) => {
-            if (error) {
-              console.error(`Shell Error: ${error.message}`)
-              return
-            }
-            console.log(`Git Log: ${stdout}`)
-            console.error(`Git Error: ${stderr}`)
-          })
-        })
-        .catch((reason) => {
-          console.error(`Error: ${reason.message}`)
-        })
+      exec(`git clone ${repoUrl}`, {
+        cwd: codeDir.path,
+        shell: '/bin/bash'
+      }, (error, stdout, stderr) => {
+        if (error) {
+          console.error(`Shell Error: ${error.message}`)
+          return
+        }
+        console.log(`Git Log: ${stdout}`)
+        console.error(`Git Error: ${stderr}`)
+      })
     })
 }
 
