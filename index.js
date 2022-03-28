@@ -20,7 +20,7 @@ handler.on('error', (err) => {
 })
 
 function checkRepo(repoName, repoUrl) {
-  fs.access(codeDir.path + repoName)
+  fs.access(codeDir.path + '/' + repoName)
     .then(() => {
       exec('git pull --all', {
         cwd: codeDir.path + repoName
@@ -35,7 +35,7 @@ function checkRepo(repoName, repoUrl) {
     })
     .catch(reason => {
       console.error(`Error: Have no git repository ${reason.path}`)
-      fs.mkdir(codeDir.path + repoName)
+      fs.mkdir(codeDir.path + '/' + repoName)
         .then(() => {
           exec(`git clone ${repoUrl}`, {
             cwd: codeDir.path + repoName
