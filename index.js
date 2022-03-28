@@ -19,11 +19,11 @@ handler.on('error', (err) => {
   console.error(`Error: ${err.message}`)
 })
 
-function checkRepo(repoFullName, repoUrl) {
-  fs.access(codeDir.path + repoFullName)
+function checkRepo(repoName, repoUrl) {
+  fs.access(codeDir.path + repoName)
     .then(() => {
       exec('git pull -all', {
-        cwd: codeDir.path + repoFullName
+        cwd: codeDir.path + repoName
       }, (error, stdout, stderr) => {
         if (error) {
           console.error(`Shell Error: ${error.message}`)
@@ -35,10 +35,10 @@ function checkRepo(repoFullName, repoUrl) {
     })
     .catch(reason => {
       console.error(`Error: Have no git repository ${reason.path}`)
-      fs.mkdir(codeDir.path + repoFullName)
+      fs.mkdir(codeDir.path + repoName)
         .then(() => {
           exec(`git clone ${repoUrl}`, {
-            cwd: codeDir.path + repoFullName
+            cwd: codeDir.path + repoName
           }, (error, stdout, stderr) => {
             if (error) {
               console.error(`Shell Error: ${error.message}`)
@@ -55,13 +55,13 @@ function checkRepo(repoFullName, repoUrl) {
 }
 
 handler.on('push', function (event) {
-  const repoFullName = event.payload.repository.full_name
+  const repoName = event.payload.repository.name
   const repoUrl = event.payload.url
   const ref = event.payload.ref
 
   console.log('Received a push event for %s to %s',
-    repoFullName,
+    repoName,
     ref)
 
-  checkRepo(repoFullName, repoUrl)
+  checkRepo(repoName, repoUrl)
 })
