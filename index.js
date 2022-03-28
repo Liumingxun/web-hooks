@@ -58,7 +58,7 @@ function checkRepo(repoName, repoUrl) {
 
 handler.on('push', function (event) {
   const repoName = event.payload.repository.name
-  const repoUrl = event.payload.url
+  const repoUrl = event.payload.clone_url
   const ref = event.payload.ref
 
   console.log('Received a push event for %s to %s',
