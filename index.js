@@ -30,8 +30,8 @@ function checkRepo(repoName, repoUrl) {
           console.error(`Shell Error: ${error.message}`)
           return
         }
-        console.log(`Git Log: ${stdout}`)
-        console.error(`Git Error: ${stderr}`)
+        console.log(`Git: ${stdout}`)
+        console.log(`Git: ${stderr}`)
       })
     })
     .catch(reason => {
@@ -44,8 +44,8 @@ function checkRepo(repoName, repoUrl) {
           console.error(`Shell Error: ${error.message}`)
           return
         }
-        console.log(`Git Log: ${stdout}`)
-        console.error(`Git Error: ${stderr}`)
+        console.log(`Git: ${stdout}`)
+        console.log(`Git: ${stderr}`)
       })
     })
 }
